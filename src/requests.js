@@ -13,7 +13,7 @@ export async function searchTweetsFn(searchTerm) {
 }
 
 export async function homeTweetsFn() {
-    const {data} = await client.query({query: queries.homeTweetsQuery});
+    const {data} = await client.query({query: queries.homeTweetsQuery, fetchPolicy: 'no-cache'});
     return data.homeTweets;
 }
 
