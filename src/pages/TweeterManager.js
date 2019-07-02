@@ -180,17 +180,6 @@ class TweeterManager extends Component {
         ) : (
             !this.state.loading && <Typography variant="subheading">No tweets to display</Typography>
           )}
-        <Button
-          variant="fab"
-          color="secondary"
-          aria-label="add"
-          className={classes.fab}
-          component={Link}
-          to="/tweets/new"
-        >
-          <AddIcon />
-        </Button>
-        <Route exact path="/tweets/:id" component={PostTweet} />
       </Fragment>
     );
   }
