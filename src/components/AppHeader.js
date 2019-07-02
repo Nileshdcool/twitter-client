@@ -8,8 +8,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 
-import LoginButton from './LoginButton';
-
 const styles = {
   flex: {
     flex: 1,
@@ -25,7 +23,6 @@ const AppHeader = ({ classes }) => (
       <Button color="inherit" component={Link} to="/">Home</Button>
       <Button color="inherit" component={Link} to="/tweets">Tweets Manager</Button>
       <div className={classes.flex} />
-      <LoginButton />
     </Toolbar>
   </AppBar>
 );

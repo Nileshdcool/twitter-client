@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { withRouter, Route, Redirect, Link } from 'react-router-dom';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 import {
   withStyles,
   Typography,
@@ -14,7 +14,6 @@ import {
   ListItemAvatar,
   Avatar
 } from '@material-ui/core';
-import { Add as AddIcon } from '@material-ui/icons';
 import moment from 'moment';
 import { find, orderBy } from 'lodash';
 import { compose } from 'recompose';
@@ -96,13 +95,16 @@ class TweeterManager extends Component {
   async postTweets() {
     const post = this.state.status || '';
     const isCreated = await createPostFn(post);
-    this.getTweets();
+    if (isCreated) {
+      this.getTweets();
+    }
+
   }
 
   handleValueChange(event) {
     this.setState({ value: event.target.value });
   }
-  
+
   handleStatusChange(event) {
     this.setState({ status: event.target.value });
   }
@@ -135,9 +137,9 @@ class TweeterManager extends Component {
           multiline
         />
         <Button onClick={() => this.postTweets()} variant="contained" color="primary" className={classes.button}>
-          Post
+          Tweet
       </Button>
-<br />
+        <br />
         <TextField
           id="outlined-search"
           label="Search field"
@@ -167,10 +169,10 @@ class TweeterManager extends Component {
                     <ListItemSecondaryAction>
                       {post.favorited ? (
                         <IconButton color="inherit" onClick={() => this.disLikeTweet(post)}>
-                          <img src="https://img.icons8.com/material-sharp/24/000000/thumbs-down.png"></img>
+                          <img alt="like" src="https://img.icons8.com/material-sharp/24/000000/thumbs-down.png"></img>
                         </IconButton>
                       ) : <IconButton color="inherit" onClick={() => this.likeTweet(post)}>
-                          <img src="https://img.icons8.com/material/24/000000/facebook-like.png"></img>
+                          <img alt="dislike" src="https://img.icons8.com/material/24/000000/facebook-like.png"></img>
                         </IconButton>}
                     </ListItemSecondaryAction>
                   </ListItem>

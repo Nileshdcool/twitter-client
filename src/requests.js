@@ -19,7 +19,7 @@ export async function homeTweetsFn() {
 
 export async function createPostFn(text) {
     const {data} = await client.mutate({mutation: queries.createPostQuery, variables: {text: text}});
-    return homeTweetsFn();
+    return data.post;
 }
 
 export async function likeTweetFn(id) {
